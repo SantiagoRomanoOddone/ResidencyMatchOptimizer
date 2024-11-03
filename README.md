@@ -2,6 +2,8 @@
 
 A Linear Programming Approach to Optimize Medical Residency Placement
 
+![Introduction](images/intro.png)
+
 ## Overview
 
 ResidencyMatchOptimizer is a tool that leverages linear programming to optimize medical residency placement. It uses an optimization model that considers both residency program preferences and applicant rankings to determine the most efficient match. This tool can enhance the satisfaction of residency programs and applicants by ensuring an optimal placement.
