@@ -113,7 +113,9 @@ The linear programming model can be expressed as follows:
 Subject to:
 
 ![equation](https://latex.codecogs.com/png.image?\color{white}\sum_{i=1}^{m}%20X_{ij}%20=%20o_j,%20\quad%20\forall%20j%20=%201,%20\dots,%20n)
+
 ![equation](https://latex.codecogs.com/png.image?\color{white}\sum_{j=1}^{n}%20X_{ij}%20=%20d_i,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
+
 ![equation](https://latex.codecogs.com/png.image?\color{white}X_{ij}%20\geq%200,%20\quad%20\forall%20j%20=%201,%20\dots,%20n,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
 This formulation ensures that each resident is assigned to exactly one hospital, each hospital's demand is met, and overall satisfaction is maximized.
