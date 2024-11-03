@@ -8,49 +8,38 @@ A Linear Programming Approach to Optimize Medical Residency Placement
 
 ResidencyMatchOptimizer is a tool that leverages linear programming to optimize medical residency placement. It uses an optimization model that considers both residency program preferences and applicant rankings to determine the most efficient match. This tool can enhance the satisfaction of residency programs and applicants by ensuring an optimal placement.
 
-## The Problem
+# Problem Background
 
-Government entities are analyzing the possibility of modifying the current medical residency assignment system to implement it nationally. Currently, the process relies on a traditional merit-based ranking system where residents are ranked based on various metrics, and then they choose the hospital for their residency based on this order. However, the governing body seeks to replace this approach with a more balanced system that also incorporates the preferences of the institutions (hospitals).
+In recent discussions, government agencies have been exploring the feasibility of a nationwide, optimized residency placement system for medical graduates. Currently, placements are determined based on a classic merit-based ranking: residency candidates are ordered by their scores across various metrics and then select hospitals in order of ranking. However, there is a push to modernize this system by incorporating not only the candidates’ preferences but also the priorities of the residency programs (i.e., hospitals).
 
-The goal is to base this new system on the widely recognized procedure known as The National Resident Matching Program (NRMP), or The Match, which has received significant recognition. Modifications will be made to enhance the evaluation of solution quality. Before moving forward with the project, a proof-of-concept phase is being conducted where various tech companies will propose high-value solutions to address the problem. It is suspected that those who provide the best solution will have an advantage in securing the project.
+The objective is to base this new approach on the well-known National Resident Matching Program (NRMP), which has been widely adopted and appreciated for balancing the needs of applicants and programs. However, the modified system seeks to define a new way to evaluate solution quality, with particular emphasis on satisfaction metrics that factor in both resident and hospital preferences.
 
-The specific problem at hand involves assigning `n` medical residents to `m` hospitals. For simplicity, it is assumed that each hospital has `p` available positions, such that \( n = m \times p \). Prior to this assignment, interviews have been conducted to guide the selection process, leading both residents and institutions to generate their respective preference lists. 
+# ResidencyMatchOptimizer Project
 
-### Preference Lists
+In this initial proof-of-concept phase, several technology companies are invited to propose solutions that add high value to this matching problem. Solutions demonstrating strong optimization in terms of overall satisfaction will gain a competitive edge if the project moves forward. DM Analytics, our consulting firm, is participating with an innovative, linear programming-based approach called ResidencyMatchOptimizer. This tool aims to find an optimal match between residents and hospitals by maximizing a comprehensive satisfaction metric across all participants.
 
-- Each hospital \( i \) (where \( 1 \leq i \leq m \)) has a preference list of \( k \) residents \( L_{hi} \), ordered from most to least preferred.
-- Each resident \( j \) (where \( 1 \leq j \leq n \)) submits a ranking of \( l \) hospitals \( L_{rj} \), also ordered from most to least preferred.
+The problem in detail involves assigning `n` residents to `m` hospitals. Here’s the simplified approach for this proof of concept:
 
-All vacancies at a hospital share the same preference list and can be considered identical.
+- Each hospital has a set number of available positions (assuming \( n = m \times p \), where each hospital has `p` positions).
+- Prior interviews have helped both residents and hospitals create ordered preference lists:
+  - Each hospital \( i \) (1 ≤ i ≤ m) has a preference list, \( L_{hi} \), ranking residents from most to least desirable.
+  - Similarly, each resident \( j \) (1 ≤ j ≤ n) has a list, \( L_{rj} \), ranking hospitals by personal preference.
 
-### Satisfaction Indices
+For each assignment, we define individual satisfaction indices:
 
-To quantify a potential solution, the following individual satisfaction indices are defined:
-
-- **Resident Satisfaction**: The satisfaction of resident \( j \) if assigned to hospital \( i \) from the resident's perspective, denoted as \( w_{jri} \):
-
+- **Resident Satisfaction** (\( w_{jri} \)): For resident \( j \) assigned to hospital \( i \), calculated based on the resident’s position of hospital \( i \) in their preference list. For example, if a resident has ranked hospital \( i \) at position \( \text{pos}(i, L_{rj}) \), their satisfaction score is defined as:
+  
   \[
-  w_{jri} = 
-  \begin{cases} 
-  2 \times (|L_{r}| - \text{pos}(i, L_{r})) & \text{if } i \in L_{rj} \\
-  -1 & \text{if } i \notin L_{rj}
-  \end{cases}
+  w_{jri} = 2 \times (\lvert L_{rj} \rvert - \text{pos}(i, L_{rj}))
   \]
 
-- **Hospital Satisfaction**: The satisfaction of hospital \( i \) when resident \( j \) is assigned, denoted as \( w_{hi} \):
-
+- **Hospital Satisfaction** (\( w_{hij} \)): For hospital \( i \) receiving resident \( j \), based on the hospital’s ranking of resident \( j \). If resident \( j \) is ranked at \( \text{pos}(j, L_{hi}) \), then:
+  
   \[
-  w_{hi} = 
-  \begin{cases} 
-  2 \times (|L_{h}| - \text{pos}(j, L_{h})) & \text{if } j \in L_{hi} \\
-  -1 & \text{if } j \notin L_{hi}
-  \end{cases}
+  w_{hij} = 2 \times (\lvert L_{hi} \rvert - \text{pos}(j, L_{hi}))
   \]
 
-### Global Satisfaction Metric
-
-To achieve a comprehensive measure of overall satisfaction for a given solution, the goal is to maximize the aggregated satisfaction, which includes the total satisfaction from each resident and the total satisfaction from each hospital.
-
+Each assignment maximizes total satisfaction by summing the satisfaction scores across all residents and hospitals, resulting in a globally optimized solution.
 
 ## Features
 
