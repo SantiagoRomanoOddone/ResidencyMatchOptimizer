@@ -4,9 +4,6 @@ A Linear Programming Approach to Optimize Medical Residency Placement
 
 ![Introduction](images/intro.png)
 
-# Overview
-
-ResidencyMatchOptimizer is a tool that leverages linear programming to optimize medical residency placement. It uses an optimization model that considers both residency program preferences and applicant rankings to determine the most efficient match. This tool can enhance the satisfaction of residency programs and applicants by ensuring an optimal placement.
 
 # Problem Background
 
@@ -16,7 +13,7 @@ The objective is to base this new approach on the well-known National Resident M
 
 # ResidencyMatchOptimizer Project
 
-In this initial proof-of-concept phase, several technology companies are invited to propose solutions that add high value to this matching problem. Solutions demonstrating strong optimization in terms of overall satisfaction will gain a competitive edge if the project moves forward. DM Analytics, our consulting firm, is participating with an innovative, linear programming-based approach called ResidencyMatchOptimizer. This tool aims to find an optimal match between residents and hospitals by maximizing a comprehensive satisfaction metric across all participants.
+ResidencyMatchOptimizer is a tool that leverages linear programming to optimize medical residency placement. It uses an optimization model that considers both residency program preferences and applicant rankings to determine the most efficient match between residents and hospitals **by maximizing a comprehensive satisfaction metric across all participants**.
 
 The problem in detail involves assigning `n` residents to `m` hospitals. Here’s the simplified approach for this proof of concept:
 
@@ -36,7 +33,6 @@ For each assignment, we define individual satisfaction indices:
     ![function2](images/image2.png)
 
 Each assignment maximizes total satisfaction by summing the satisfaction scores across all residents and hospitals, resulting in a globally optimized solution.
-
 
 
 ## Features
