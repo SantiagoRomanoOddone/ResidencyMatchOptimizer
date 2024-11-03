@@ -58,7 +58,6 @@ Dependencies include:
             gap_mean:  3.225 %
         ```
 
-
 ## Model Formulation
 
 This section describes the linear programming formulation used to optimize the assignment of residents to hospitals, aiming to maximize overall satisfaction.
@@ -75,9 +74,7 @@ This section describes the linear programming formulation used to optimize the a
 2. There are no infeasible assignment combinations.
 3. The demand for residents by hospitals matches the supply of residents in each instance, meaning that the system is balanced:
    
-   \[
-   \sum_{j=1}^{n} o_j = \sum_{i=1}^{m} d_i
-   \]
+   ![equation](https://latex.codecogs.com/png.latex?\sum_{j=1}^{n}%20o_j%20=%20\sum_{i=1}^{m}%20d_i)
 
    Where:
    - \( o_j \): Availability (supply) of resident `j`, which is considered equal to 1 for all cases.
@@ -91,54 +88,34 @@ This section describes the linear programming formulation used to optimize the a
 
 Among all feasible solutions, the goal is to find the assignment that maximizes the overall satisfaction of both residents and hospitals:
 
-\[
-\max \sum_{j=1}^{n} \sum_{i=1}^{m} c_{ij} \cdot X_{ij}
-\]
+![equation](https://latex.codecogs.com/png.latex?\max%20\sum_{j=1}^{n}%20\sum_{i=1}^{m}%20c_{ij}%20\cdot%20X_{ij})
 
 ### Feasibility Constraints
 
 1. **Residents**: Each resident `j` must be assigned to exactly one hospital `i`:
 
-   \[
-   \sum_{i=1}^{m} X_{ij} = o_j, \quad \forall j = 1, \dots, n
-   \]
+   ![equation](https://latex.codecogs.com/png.latex?\sum_{i=1}^{m}%20X_{ij}%20=%20o_j,%20\quad%20\forall%20j%20=%201,%20\dots,%20n)
 
 2. **Hospitals**: Each hospital `i` must receive a number of residents equal to its demand \( d_i \):
 
-   \[
-   \sum_{j=1}^{n} X_{ij} = d_i, \quad \forall i = 1, \dots, m
-   \]
+   ![equation](https://latex.codecogs.com/png.latex?\sum_{j=1}^{n}%20X_{ij}%20=%20d_i,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
 3. **Non-negativity**: The decision variable \( X_{ij} \) must be non-negative:
 
-   \[
-   X_{ij} \geq 0, \quad \forall j = 1, \dots, n, \quad \forall i = 1, \dots, m
-   \]
+   ![equation](https://latex.codecogs.com/png.latex?X_{ij}%20\geq%200,%20\quad%20\forall%20j%20=%201,%20\dots,%20n,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
 ### Linear Programming Formulation
 
 The linear programming model can be expressed as follows:
 
-\[
-\max \sum_{j=1}^{n} \sum_{i=1}^{m} c_{ij} \cdot X_{ij}
-\]
+![equation](https://latex.codecogs.com/png.latex?\max%20\sum_{j=1}^{n}%20\sum_{i=1}^{m}%20c_{ij}%20\cdot%20X_{ij})
 
 Subject to:
 
-\[
-\sum_{i=1}^{m} X_{ij} = o_j, \quad \forall j = 1, \dots, n
-\]
-\[
-\sum_{j=1}^{n} X_{ij} = d_i, \quad \forall i = 1, \dots, m
-\]
-\[
-X_{ij} \geq 0, \quad \forall j = 1, \dots, n, \quad \forall i = 1, \dots, m
-\]
+![equation](https://latex.codecogs.com/png.latex?\sum_{i=1}^{m}%20X_{ij}%20=%20o_j,%20\quad%20\forall%20j%20=%201,%20\dots,%20n)
+![equation](https://latex.codecogs.com/png.latex?\sum_{j=1}^{n}%20X_{ij}%20=%20d_i,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
+![equation](https://latex.codecogs.com/png.latex?X_{ij}%20\geq%200,%20\quad%20\forall%20j%20=%201,%20\dots,%20n,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
 This formulation ensures that each resident is assigned to exactly one hospital, each hospital's demand is met, and overall satisfaction is maximized.
 
-
-
-
 If you want to see the problem in detail, you can check the `enunciado.pdf` file.
-
