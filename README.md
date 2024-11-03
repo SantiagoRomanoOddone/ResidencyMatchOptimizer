@@ -8,6 +8,50 @@ A Linear Programming Approach to Optimize Medical Residency Placement
 
 ResidencyMatchOptimizer is a tool that leverages linear programming to optimize medical residency placement. It uses an optimization model that considers both residency program preferences and applicant rankings to determine the most efficient match. This tool can enhance the satisfaction of residency programs and applicants by ensuring an optimal placement.
 
+## The Problem
+
+Government entities are analyzing the possibility of modifying the current medical residency assignment system to implement it nationally. Currently, the process relies on a traditional merit-based ranking system where residents are ranked based on various metrics, and then they choose the hospital for their residency based on this order. However, the governing body seeks to replace this approach with a more balanced system that also incorporates the preferences of the institutions (hospitals).
+
+The goal is to base this new system on the widely recognized procedure known as The National Resident Matching Program (NRMP), or The Match, which has received significant recognition. Modifications will be made to enhance the evaluation of solution quality. Before moving forward with the project, a proof-of-concept phase is being conducted where various tech companies will propose high-value solutions to address the problem. It is suspected that those who provide the best solution will have an advantage in securing the project.
+
+The specific problem at hand involves assigning `n` medical residents to `m` hospitals. For simplicity, it is assumed that each hospital has `p` available positions, such that \( n = m \times p \). Prior to this assignment, interviews have been conducted to guide the selection process, leading both residents and institutions to generate their respective preference lists. 
+
+### Preference Lists
+
+- Each hospital \( i \) (where \( 1 \leq i \leq m \)) has a preference list of \( k \) residents \( L_{hi} \), ordered from most to least preferred.
+- Each resident \( j \) (where \( 1 \leq j \leq n \)) submits a ranking of \( l \) hospitals \( L_{rj} \), also ordered from most to least preferred.
+
+All vacancies at a hospital share the same preference list and can be considered identical.
+
+### Satisfaction Indices
+
+To quantify a potential solution, the following individual satisfaction indices are defined:
+
+- **Resident Satisfaction**: The satisfaction of resident \( j \) if assigned to hospital \( i \) from the resident's perspective, denoted as \( w_{jri} \):
+
+  \[
+  w_{jri} = 
+  \begin{cases} 
+  2 \times (|L_{r}| - \text{pos}(i, L_{r})) & \text{if } i \in L_{rj} \\
+  -1 & \text{if } i \notin L_{rj}
+  \end{cases}
+  \]
+
+- **Hospital Satisfaction**: The satisfaction of hospital \( i \) when resident \( j \) is assigned, denoted as \( w_{hi} \):
+
+  \[
+  w_{hi} = 
+  \begin{cases} 
+  2 \times (|L_{h}| - \text{pos}(j, L_{h})) & \text{if } j \in L_{hi} \\
+  -1 & \text{if } j \notin L_{hi}
+  \end{cases}
+  \]
+
+### Global Satisfaction Metric
+
+To achieve a comprehensive measure of overall satisfaction for a given solution, the goal is to maximize the aggregated satisfaction, which includes the total satisfaction from each resident and the total satisfaction from each hospital.
+
+
 ## Features
 
 - **Linear Programming-based Matching**: Employs linear programming (LP) to solve the residency matching problem.
