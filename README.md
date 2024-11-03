@@ -11,7 +11,6 @@ ResidencyMatchOptimizer is a tool that leverages linear programming to optimize 
 ## Features
 
 - **Linear Programming-based Matching**: Employs linear programming (LP) to solve the residency matching problem.
-- **Customizable Parameters**: Allows customization to adapt to different requirements of residency programs and applicants.
 - **Optimal Matching**: Provides an optimal match output based on the objective functions and constraints defined in the model.
 
 
