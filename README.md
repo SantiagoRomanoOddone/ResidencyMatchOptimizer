@@ -22,24 +22,22 @@ The problem in detail involves assigning `n` residents to `m` hospitals. Here’
 
 - Each hospital has a set number of available positions (assuming \( n = m \times p \), where each hospital has `p` positions).
 - Prior interviews have helped both residents and hospitals create ordered preference lists:
-  - Each hospital \( i \) (1 ≤ i ≤ m) has a preference list, \( L_{hi} \), ranking residents from most to least desirable.
-  - Similarly, each resident \( j \) (1 ≤ j ≤ n) has a list, \( L_{rj} \), ranking hospitals by personal preference.
+- Each hospital \( i \) (1 ≤ i ≤ m) has a preference list, \( L_{hi} \), ranking residents from most to least desirable.
+- Similarly, each resident \( j \) (1 ≤ j ≤ n) has a list, \( L_{rj} \), ranking hospitals by personal preference.
 
 For each assignment, we define individual satisfaction indices:
 
 - **Resident Satisfaction** (\( w_{jri} \)): For resident \( j \) assigned to hospital \( i \), calculated based on the resident’s position of hospital \( i \) in their preference list. For example, if a resident has ranked hospital \( i \) at position \( \text{pos}(i, L_{rj}) \), their satisfaction score is defined as:
   
-  \[
-  w_{jri} = 2 \times (\lvert L_{rj} \rvert - \text{pos}(i, L_{rj}))
-  \]
+  ![equation](https://latex.codecogs.com/png.image?\color{white}w_{jri}=2\times(\lvert L_{rj} \rvert - \text{pos}(i, L_{rj})))
 
 - **Hospital Satisfaction** (\( w_{hij} \)): For hospital \( i \) receiving resident \( j \), based on the hospital’s ranking of resident \( j \). If resident \( j \) is ranked at \( \text{pos}(j, L_{hi}) \), then:
   
-  \[
-  w_{hij} = 2 \times (\lvert L_{hi} \rvert - \text{pos}(j, L_{hi}))
-  \]
+  ![equation](https://latex.codecogs.com/png.image?\color{white}w_{hij}=2\times(\lvert L_{hi} \rvert - \text{pos}(j, L_{hi})))
 
 Each assignment maximizes total satisfaction by summing the satisfaction scores across all residents and hospitals, resulting in a globally optimized solution.
+
+
 
 ## Features
 
