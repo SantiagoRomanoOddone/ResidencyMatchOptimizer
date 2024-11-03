@@ -20,18 +20,18 @@ In this initial proof-of-concept phase, several technology companies are invited
 
 The problem in detail involves assigning `n` residents to `m` hospitals. Here’s the simplified approach for this proof of concept:
 
-- Each hospital has a set number of available positions (assuming \( n = m \times p \), where each hospital has `p` positions).
+- Each hospital has a set number of available positions (assuming `n = m x p`, where each hospital has `p` positions).
 - Prior interviews have helped both residents and hospitals create ordered preference lists:
-- Each hospital \( i \) (1 ≤ i ≤ m) has a preference list, \( L_{hi} \), ranking residents from most to least desirable.
-- Similarly, each resident \( j \) (1 ≤ j ≤ n) has a list, \( L_{rj} \), ranking hospitals by personal preference.
+- Each hospital `i` (1 ≤ i ≤ m) has a preference list, `L_{hi}`, ranking residents from most to least desirable.
+- Similarly, each resident `j` (1 ≤ j ≤ n) has a list, `L_{rj}`, ranking hospitals by personal preference.
 
 For each assignment, we define individual satisfaction indices:
 
-- **Resident Satisfaction** (\( w_{jri} \)): For resident \( j \) assigned to hospital \( i \), calculated based on the resident’s position of hospital \( i \) in their preference list. For example, if a resident has ranked hospital \( i \) at position \( \text{pos}(i, L_{rj}) \), their satisfaction score is defined as:
+- **Resident Satisfaction** (`w_{jri}`): For resident `j` assigned to hospital ` i `, calculated based on the resident’s position of hospital ` i ` in their preference list. For example, if a resident has ranked hospital ` i ` at position ` \text{pos}(i, L_{rj}) `, their satisfaction score is defined as:
   
     ![function1](images/image1.png)
 
-- **Hospital Satisfaction** (\( w_{hij} \)): For hospital \( i \) receiving resident \( j \), based on the hospital’s ranking of resident \( j \). If resident \( j \) is ranked at \( \text{pos}(j, L_{hi}) \), then:
+- **Hospital Satisfaction** (` w_{hij} `): For hospital ` i ` receiving resident ` j `, based on the hospital’s ranking of resident ` j `. If resident ` j ` is ranked at ` \text{pos}(j, L_{hi}) `, then:
   
     ![function2](images/image2.png)
 
@@ -64,12 +64,12 @@ This section describes the linear programming formulation used to optimize the a
    ![equation](https://latex.codecogs.com/png.image?\color{white}\sum_{j=1}^{n}%20o_j%20=%20\sum_{i=1}^{m}%20d_i)
 
    Where:
-   - \( o_j \): Availability (supply) of resident `j`, which is considered equal to 1 for all cases.
-   - \( d_i \): Demand of hospital `i`, which varies according to the instance size (`small`, `medium`, or `large`).
+   - ` o_j `: Availability (supply) of resident `j`, which is considered equal to 1 for all cases.
+   - ` d_i `: Demand of hospital `i`, which varies according to the instance size (`small`, `medium`, or `large`).
 
 ### Decision Variables
 
-- \( X_{ij} \): Binary variable where \( X_{ij} = 1 \) if resident `j` is assigned to hospital `i`, and 0 otherwise.
+- ` X_{ij} `: Binary variable where ` X_{ij} = 1 ` if resident `j` is assigned to hospital `i`, and 0 otherwise.
 
 ### Objective Function
 
@@ -83,11 +83,11 @@ Among all feasible solutions, the goal is to find the assignment that maximizes 
 
    ![equation](https://latex.codecogs.com/png.image?\color{white}\sum_{i=1}^{m}%20X_{ij}%20=%20o_j,%20\quad%20\forall%20j%20=%201,%20\dots,%20n)
 
-2. **Hospitals**: Each hospital `i` must receive a number of residents equal to its demand \( d_i \):
+2. **Hospitals**: Each hospital `i` must receive a number of residents equal to its demand ` d_i `:
 
    ![equation](https://latex.codecogs.com/png.image?\color{white}\sum_{j=1}^{n}%20X_{ij}%20=%20d_i,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
-3. **Non-negativity**: The decision variable \( X_{ij} \) must be non-negative:
+3. **Non-negativity**: The decision variable ` X_{ij} ` must be non-negative:
 
    ![equation](https://latex.codecogs.com/png.image?\color{white}X_{ij}%20\geq%200,%20\quad%20\forall%20j%20=%201,%20\dots,%20n,%20\quad%20\forall%20i%20=%201,%20\dots,%20m)
 
@@ -153,5 +153,3 @@ Dependencies include:
             gap_mean:  3.225 %
         ```
 
-
-If you want to see the problem in detail, you can check the `enunciado.pdf` file.
