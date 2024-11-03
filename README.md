@@ -29,11 +29,11 @@ For each assignment, we define individual satisfaction indices:
 
 - **Resident Satisfaction** (\( w_{jri} \)): For resident \( j \) assigned to hospital \( i \), calculated based on the resident’s position of hospital \( i \) in their preference list. For example, if a resident has ranked hospital \( i \) at position \( \text{pos}(i, L_{rj}) \), their satisfaction score is defined as:
   
-![function1](images/image1.png)
+    ![function1](images/image1.png)
 
 - **Hospital Satisfaction** (\( w_{hij} \)): For hospital \( i \) receiving resident \( j \), based on the hospital’s ranking of resident \( j \). If resident \( j \) is ranked at \( \text{pos}(j, L_{hi}) \), then:
   
-![function2](images/image2.png)
+    ![function2](images/image2.png)
 
 Each assignment maximizes total satisfaction by summing the satisfaction scores across all residents and hospitals, resulting in a globally optimized solution.
 
